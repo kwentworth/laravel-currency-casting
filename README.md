@@ -35,6 +35,7 @@ class Plan extends Model
     protected $casts = [
         'price' => Currency::class,
         'price_with_digits' => Currency::class . ':4',
+        'price_with_forced_decimals' => Currency::class .':2,true', // will always display decimals, including .00
     ];
 
     //
