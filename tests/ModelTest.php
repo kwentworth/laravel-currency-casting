@@ -121,4 +121,17 @@ class ModelTest extends TestCase
         $this->assertSame(17576, $model->getRawAttribute('price_triple'));
         $this->assertSame(17.576, $model->price_triple);
     }
+
+    /**
+     * Test if whole dollar amounts are returned with trailing zeroes
+     *
+     * @return void
+     * @test
+     */
+    public function returnWholeDollarAmountsWithForce(): void
+    {
+        $model = new Model(['price_forced' => 19.00]);
+        $this->assertSame(1900, $model->getRawAttribute('price_forced'));
+        $this->assertSame('19.00', $model->price_forced);
+    }
 }
